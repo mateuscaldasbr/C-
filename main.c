@@ -15,15 +15,15 @@ int main()
     printf("Insira o numero de processos 'N'\n");
     scanf("%d", &n);
 
-    int x[n], y[n]; /* x = Tempo de ingresso do processo // y = Tempo de duração do processo // */
-
-    int i; // Não declarado dentro do for por imcopatibilidade do copilador usado no VSCODE.
-
+    int x[n]; /* x = Tempo de ingresso do processo. */
+    int y[n]; /* y = Tempo de duração do processo. */
+    int i;    /* Declarado fora do for imcopatibilidade do copilador usado no VSCODE. */
     for (i = 0; i < n; i++)
     {
         printf("Insira o tempo de ingresso do processo 'X' [%d]\n", i + 1);
-
-        printf("Insira o tempo de duracao do processo 'Y' [%d]\n", i+1);
+        scanf("%d", &x[i]);
+        printf("Insira o tempo de duracao do processo 'Y' [%d]\n", i + 1);
+        scanf("%d", &y[i]);
     }
 
     printf("SUCESSO\n", n);
