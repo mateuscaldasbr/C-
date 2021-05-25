@@ -26,7 +26,14 @@ int main()
         scanf("%d", &y[i]);
     }
 
-    printf("SUCESSO\n", n);
+    printf("Escolha o algoritmo de escalonamento \n");
+    printf("||  01 - FCFS ||\n");
+    printf("||  02 - SJF  ||\n");
+
+    int r; /* variável para a respsota */
+    scanf("%d", &n);
+
+    printf("||  SUCESSO  ||\n", n);
     //system("pause");
     return 0;
 }
