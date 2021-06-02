@@ -17,7 +17,8 @@ int main()
 
     int x[n]; /* x = Tempo de ingresso do processo. */
     int y[n]; /* y = Tempo de duração do processo. */
-    int i;    /* Declarado fora do for imcopatibilidade do copilador usado no VSCODE. */
+    int i;    /* Declarado fora do for por incopatibilidade do copilador usado no VSCODE. */
+
     for (i = 0; i < n; i++)
     {
         printf("Insira o tempo de ingresso do processo 'X' [%d]\n", i + 1);
@@ -26,14 +27,56 @@ int main()
         scanf("%d", &y[i]);
     }
 
+    /* ORGANIZAR POR TEMPO DE CHEGADA*/
+
+    int tempA = i;
+
+    for (tempA = 0; tempA < n; tempA++)
+    {
+        for (i = 0; i < n; i++)
+        {
+            int tempB;
+            for (tempB = 0; i < n; i++)
+            {
+                if (x[i] > x[i + 1])
+                {
+                    int temp;
+                    temp = x[i];
+                    x[i] = x[i + 1]; /* Ordenando pela posição de chegada */
+                    x[i + 1] = temp;
+
+                    temp = y[i];
+                    y[i] = y[i + 1]; /* Tempo de duração do processo*/
+                    y[i + 1] = temp;
+                }
+            }
+        }
+    }
+    
+    /* Teste Organização
+    for (i = 0; i < n; i++)
+    {
+        printf("[%d] - [%d]\n", x[i], y[i]);
+    }*/
+
     printf("Escolha o algoritmo de escalonamento \n");
     printf("||  01 - FCFS ||\n");
     printf("||  02 - SJF  ||\n");
 
-    int r; /* variável para a respsota */
-    scanf("%d", &n);
+    int resposta; /* variável para a respsota */
+    scanf("%d", &resposta);
 
-    printf("||  SUCESSO  ||\n", n);
-    //system("pause");
+    switch (resposta)
+    {
+    case 1:;
+        break;
+    case 2:;
+        break;
+    default:
+        printf("Opcao invalida\n");
+    }
+
+    printf("\n||  SUCESSO  ||\n", n);
+    system("pause");
     return 0;
 }
