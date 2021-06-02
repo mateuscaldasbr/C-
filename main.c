@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+/*#include <fcfs.h>*/
 
 /*Seu programa deve ler vários conjuntos de teste. 
 A primeira linha de um conjunto de teste contém um inteiro não negativo, N, que indica o número de processos a serem lidos e colocados na fila de prontos (o valor N = 0 indica o final da entrada).
@@ -17,14 +18,16 @@ int main()
 
     int x[n]; /* x = Tempo de ingresso do processo. */
     int y[n]; /* y = Tempo de duração do processo. */
+    int z[n]; /* z = Numero do processo */
+    
     int i;    /* Declarado fora do for por incopatibilidade do copilador usado no VSCODE. */
-
     for (i = 0; i < n; i++)
     {
         printf("Insira o tempo de ingresso do processo 'X' [%d]\n", i + 1);
         scanf("%d", &x[i]);
         printf("Insira o tempo de duracao do processo 'Y' [%d]\n", i + 1);
         scanf("%d", &y[i]);
+        z[i] = i + 1;
     }
 
     /* ORGANIZAR POR TEMPO DE CHEGADA*/
@@ -48,11 +51,15 @@ int main()
                     temp = y[i];
                     y[i] = y[i + 1]; /* Tempo de duração do processo*/
                     y[i + 1] = temp;
+
+                    temp = z[i];
+                    z[i] = z[i + 1]; /* Numero do processo*/
+                    z[i + 1] = temp;
                 }
             }
         }
     }
-    
+
     /* Teste Organização
     for (i = 0; i < n; i++)
     {
@@ -68,9 +75,13 @@ int main()
 
     switch (resposta)
     {
-    case 1:;
+    case 1:
+    {
+        void fcfs(int vetorA[], int vetorB[], int vetorC[], int n);
+        fcfs(x, y, z, n);
         break;
-    case 2:;
+    }
+    case 2:
         break;
     default:
         printf("Opcao invalida\n");
@@ -79,4 +90,18 @@ int main()
     printf("\n||  SUCESSO  ||\n", n);
     system("pause");
     return 0;
+}
+
+/*fcfs.h ----- código */
+
+void fcfs(int vetorA[], int vetorB[], int vetorC[], int n)
+{
+    float tempMedioExecucao;
+    float tempMedioEspera;
+    printf("\nOrdem de Execucao\n");
+    int i;
+    for (i = 0; i < n; i++)
+    {
+        printf("\n P[%d] \n", vetorC[i]);
+    }
 }
