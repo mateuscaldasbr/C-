@@ -19,8 +19,8 @@ int main()
     int x[n]; /* x = Tempo de ingresso do processo. */
     int y[n]; /* y = Tempo de duração do processo. */
     int z[n]; /* z = Numero do processo */
-    
-    int i;    /* Declarado fora do for por incopatibilidade do copilador usado no VSCODE. */
+
+    int i; /* Declarado fora do for por incopatibilidade do copilador usado no VSCODE. */
     for (i = 0; i < n; i++)
     {
         printf("Insira o tempo de ingresso do processo 'X' [%d]\n", i + 1);
@@ -32,14 +32,15 @@ int main()
 
     /* ORGANIZAR POR TEMPO DE CHEGADA*/
 
-    int tempA = i;
+    int tempA;
+    int tempB;
 
     for (tempA = 0; tempA < n; tempA++)
     {
         for (i = 0; i < n; i++)
         {
-            int tempB;
-            for (tempB = 0; i < n; i++)
+
+            for (tempB = 0; i < n - 1; i++)
             {
                 if (x[i] > x[i + 1])
                 {
@@ -59,12 +60,6 @@ int main()
             }
         }
     }
-
-    /* Teste Organização
-    for (i = 0; i < n; i++)
-    {
-        printf("[%d] - [%d]\n", x[i], y[i]);
-    }*/
 
     printf("Escolha o algoritmo de escalonamento \n");
     printf("||  01 - FCFS ||\n");
@@ -96,10 +91,18 @@ int main()
 
 void fcfs(int vetorA[], int vetorB[], int vetorC[], int n)
 {
+    /*Teste Organização*/
+    int i;
+    for (i = 0; i < n; i++)
+    {
+        printf("Ingresso[%d] - Duracao[%d] - Processo[%d] \n", vetorA[i], vetorB[i], vetorC[i]);
+    }
+
     float tempMedioExecucao;
     float tempMedioEspera;
+
     printf("\nOrdem de Execucao\n");
-    int i;
+
     for (i = 0; i < n; i++)
     {
         printf("\n P[%d] \n", vetorC[i]);
