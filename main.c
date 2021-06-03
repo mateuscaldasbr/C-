@@ -82,8 +82,8 @@ int main()
         printf("Opcao invalida\n");
     }
 
-    printf("\n||  SUCESSO  ||\n", n);
-    system("pause");
+    printf("\n||  SUCESSO  ||\n");
+    /*system("pause");*/
     return 0;
 }
 
@@ -97,14 +97,27 @@ void fcfs(int vetorA[], int vetorB[], int vetorC[], int n)
     {
         printf("Ingresso[%d] - Duracao[%d] - Processo[%d] \n", vetorA[i], vetorB[i], vetorC[i]);
     }
-
-    float tempMedioExecucao;
+    ////////////////////////////////////////////////////
+    float turnaround = 0; /*tempMedioExecucao*/
+    float tempTurn = 0;
+    for (i = 0; i < n; i++)
+    {
+        tempTurn = vetorB[i] + tempTurn;
+        turnaround = turnaround + tempTurn;
+    }
+    turnaround = (turnaround / n);
+    printf("\n Turnaround: %f\n", turnaround);
+    ////////////////////////////////////////////////////
     float tempMedioEspera;
 
+    printf("\n Tempo Medio de Espera: %f\n", tempMedioEspera / n);
+
+    ////////////////////////////////////////////////////
     printf("\nOrdem de Execucao\n");
 
     for (i = 0; i < n; i++)
     {
         printf("\n P[%d] \n", vetorC[i]);
     }
+    ////////////////////////////////////////////////////
 }
