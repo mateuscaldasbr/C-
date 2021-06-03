@@ -108,9 +108,15 @@ void fcfs(int vetorA[], int vetorB[], int vetorC[], int n)
     turnaround = (turnaround / n);
     printf("\n Turnaround: %f\n", turnaround);
     ////////////////////////////////////////////////////
-    float tempMedioEspera;
-
-    printf("\n Tempo Medio de Espera: %f\n", tempMedioEspera / n);
+    float tempMedioEspera = 0;
+    float result = 0;
+    for (i = 0; i < n-1; i++)
+    {
+        tempMedioEspera = vetorB[i] + tempMedioEspera;
+        result = result + tempMedioEspera;
+    }
+    result = (result / n);
+    printf("\n Tempo medio de espera %f\n", result);
 
     ////////////////////////////////////////////////////
     printf("\nOrdem de Execucao\n");
