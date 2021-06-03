@@ -103,7 +103,7 @@ void fcfs(int vetorA[], int vetorB[], int vetorC[], int n)
     for (i = 0; i < n; i++)
     {
         tempTurn = vetorB[i] + tempTurn;
-        turnaround = turnaround + tempTurn;
+        turnaround = turnaround + tempTurn - vetorA[i];
     }
     turnaround = (turnaround / n);
     printf("\n Turnaround: %f\n", turnaround);
@@ -113,7 +113,7 @@ void fcfs(int vetorA[], int vetorB[], int vetorC[], int n)
     for (i = 0; i < n-1; i++)
     {
         tempMedioEspera = vetorB[i] + tempMedioEspera;
-        result = result + tempMedioEspera;
+        result = result + tempMedioEspera - vetorA[i];
     }
     result = (result / n);
     printf("\n Tempo medio de espera %f\n", result);
