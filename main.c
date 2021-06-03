@@ -99,31 +99,36 @@ void fcfs(int vetorA[], int vetorB[], int vetorC[], int n)
     }
     ////////////////////////////////////////////////////
     float turnaround = 0; /*tempMedioExecucao*/
-    float tempTurn = 0;
+    float somaTurn = 0;
     for (i = 0; i < n; i++)
     {
-        tempTurn = vetorB[i] + tempTurn;
-        turnaround = turnaround + tempTurn - vetorA[i];
+        somaTurn = vetorB[i] + somaTurn;
+        turnaround = turnaround + somaTurn - vetorA[i];
     }
     turnaround = (turnaround / n);
+    if (turnaround < 0)
+        turnaround = 0;
     printf("\n Turnaround: %f\n", turnaround);
     ////////////////////////////////////////////////////
-    float tempMedioEspera = 0;
-    float result = 0;
-    for (i = 0; i < n-1; i++)
+    float somaEspera = 0;
+    float resultoEspera = 0;
+    for (i = 0; i < n; i++)
     {
-        tempMedioEspera = vetorB[i] + tempMedioEspera;
-        result = result + tempMedioEspera - vetorA[i];
+        somaEspera = vetorB[i] + somaEspera;
+        resultoEspera = resultoEspera + somaEspera - vetorA[i];
     }
-    result = (result / n);
-    printf("\n Tempo medio de espera %f\n", result);
+
+    resultoEspera = ((resultoEspera - somaEspera) / n);
+    if (resultoEspera < 0)
+        resultoEspera = 0;
+    printf("\n Tempo medio de espera %f\n", resultoEspera);
 
     ////////////////////////////////////////////////////
-    printf("\nOrdem de Execucao\n");
+    printf("\nOrdem de Execucao\n\n");
 
     for (i = 0; i < n; i++)
     {
-        printf("\n P[%d] \n", vetorC[i]);
+        printf("\tP[%d]", vetorC[i]);
     }
     ////////////////////////////////////////////////////
 }
