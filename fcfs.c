@@ -1,4 +1,5 @@
 /* Paulo Mateus de Lima Caldas && Sérgio do Carmo*/
+/*Algoritmo FCFS*/
 
 #include <stdio.h>
 #define max 50 /*Basicamente usado para determinar o tamanho do vetor*/

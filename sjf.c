@@ -1,3 +1,6 @@
+/*Paulo Mateus de Lima Caldas && Sérgio*/
+/*ALGORITMO DE SJF*/
+
 #include <stdio.h>
 #define max 50
 int main()
