@@ -6,15 +6,20 @@ void main()
     int y[20],x[10],n,i,j,temp,z[10],st[10],ft[10],wt[10],ta[10];
     int totwt=0,totta=0;
     float tempMedioEspera,tempMedioExecucao;
-    char pn[10][10],t[10];
+    char pn[10][10] =
+    {'p'}
+    
+    ,t[10];
     //clrscr();
+
     printf("Insira numero de processos a serem lidos e colocados na fila de prontos:");
     scanf("%d",&n);
+
     for(i=0; i<n; i++)
     {
         printf("Insira o tempo de ingresso,tempo de execucao & prioridade do processo");
         //flushall();
-        scanf("%s%d%d%d",&x[i],&y[i],&z[i]);
+        scanf("%d%d%d",&x[i],&y[i],&z[i]);
     }
     for(i=0; i<n; i++)
         for(j=0; j<n; j++)
