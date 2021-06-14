@@ -5,32 +5,28 @@
     #include<conio.h>  
       
     void main()  
-    {  
-        // initlialize the variable name  
-        int i, NOP, sum=0,count=0, y, quant, wt=0, tat=0, at[10], bt[10], temp[10];  
+    {    
+        int i, n, sum=0,count=0, y, m, wt=0, tat=0, at[10], bt[10], temp[10];  
         float avg_wt, avg_tat;  
-        printf(" Total number of process in the system: ");  
-        scanf("%d", &NOP);  
-        y = NOP; // Assign the number of process to variable y  
-      
-    // Use for loop to enter the details of the process like Arrival time and the Burst Time  
-    for(i=0; i<NOP; i++)  
+        printf("O valor do quantum a ser utilizado no escalonamento dos processos\n");  
+    scanf("%d", &m); 
+        printf("O numero de processos a serem lidos e colocados na fila de prontos\n");  
+        scanf("%d", &n);  
+        y = n;  
+       
+    for(i=0; i<n; i++)  
     {  
-    printf("\n Enter the Arrival and Burst time of the Process[%d]\n", i+1);  
-    printf(" Arrival time is: \t");  // Accept arrival time  
+    printf("Tempo de ingresso do processo: %i \n",i+1);  
     scanf("%d", &at[i]);  
-    printf(" \nBurst time is: \t"); // Accept the Burst time  
+    printf("Tempo de duracao do processo \n");
     scanf("%d", &bt[i]);  
-    temp[i] = bt[i]; // store the burst time in temp array  
-    }  
-    // Accept the Time qunat  
-    printf("Enter the Time Quantum for the process: \t");  
-    scanf("%d", &quant);  
+    temp[i] = bt[i]; /*Guardar a duracao do processo em um array*/
+    } 
     // Display the process No, burst time, Turn Around Time and the waiting time  
     printf("\n Process No \t\t Burst Time \t\t TAT \t\t Waiting Time ");  
     for(sum=0, i = 0; y!=0; )  
     {  
-    if(temp[i] <= quant && temp[i] > 0) // define the conditions   
+    if(temp[i] <= m && temp[i] > 0) // define the conditions   
     {  
         sum = sum + temp[i];  
         temp[i] = 0;  
@@ -38,8 +34,8 @@
         }     
         else if(temp[i] > 0)  
         {  
-            temp[i] = temp[i] - quant;  
-            sum = sum + quant;    
+            temp[i] = temp[i] - m;  
+            sum = sum + m;    
         }  
         if(temp[i]==0 && count==1)  
         {  
@@ -49,7 +45,7 @@
             tat = tat+sum-at[i];  
             count =0;     
         }  
-        if(i==NOP-1)  
+        if(i==n-1)  
         {  
             i=0;  
         }  
@@ -63,8 +59,8 @@
         }  
     }  
     // represents the average waiting time and Turn Around time  
-    avg_wt = wt * 1.0/NOP;  
-    avg_tat = tat * 1.0/NOP;  
+    avg_wt = wt * 1.0/n;  
+    avg_tat = tat * 1.0/n;  
     printf("\n Average Turn Around Time: \t%f", avg_wt);  
     printf("\n Average Waiting Time: \t%f", avg_tat);  
     getch();  
