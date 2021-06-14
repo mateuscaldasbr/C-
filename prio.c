@@ -1,65 +1,67 @@
-/*ALGORITMO POR PRIORIDADES*/
-
-#include <stdio.h>
-#define max 30
-
-main(){
-    //wt - tempo de espera
-    //bt - tempo de execução
-    //tat - tournaround
-
-	int i, n, j, t, bt[max], wt[max], pr[max], tat[max], pos;
-	float awt = 0, atat = 0;
-
-	printf("Quantidade de Processos: ");
-	scanf("%d", &n);
-
-	printf("Tempo de Execução: ");
-	for(i=0; i<n; i++){
-		scanf("%d", &bt[i]);
-	}
-
-	printf("Insira a Prioridade dos Processos: ");
-	for(i=0; i<n; i++){
-		scanf("%d", &pr[i]);
-	}
-
-	for(i=0; i<n; i++){
-		pos = i;
-		for(j=i+1; j<n; j++){
-			if(pr[j] < pr[pos]){
-				pos = j;
-			}
-		}
-		t = pr[i];
-		pr[i] = pr[pos];
-		pr[pos] = t;
-
-		t = bt[i];
-		bt[i] = bt[pos];
-		bt[pos] = t;
-
-	}
-
-	wt[0] = 0;
-	printf("Processos\tTempo_Execucaio\tPrioridade\tTempo_Espera\tTurnaround\n");
-
-	for(i=0; i<n; i++){
-		wt[i] = 0;
-		tat[i] = 0;
-		for(j=0; j<i; j++){
-			wt[i] = wt[i] + bt[j];
-		}
-
-		tat[i] = wt[i] + bt[i];
-		awt = awt + wt[i];
-		atat = atat + tat[i];
-
-		printf("%d\t%d\t\t%d\t\t%d\t\t%d\n", i+1, bt[i], pr[i], wt[i], tat[i]);
-	}
-	awt = awt/n;
-	atat = atat/n;
-
-	printf("Media Tempo de Espera: %f", awt);
-	printf("Media de Turnaround: %f", atat);
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+void main()
+{
+    int y[20],x[10],n,i,j,temp,z[10],st[10],ft[10],wt[10],ta[10];
+    int totwt=0,totta=0;
+    float awt,ata;
+    char pn[10][10],t[10];
+    //clrscr();
+    printf("Insira numero de processos a serem lidos e colocados na fila de prontos:");
+    scanf("%d",&n);
+    for(i=0; i<n; i++)
+    {
+        printf("Nome do processo, tempo de ingresso,tempo de execucao & prioridade");
+        //flushall();
+        scanf("%s%d%d%d",pn[i],&x[i],&y[i],&z[i]);
+    }
+    for(i=0; i<n; i++)
+        for(j=0; j<n; j++)
+        {
+            if(z[i]<z[j])
+            {
+                temp=z[i];
+                z[i]=z[j];
+                z[j]=temp;
+                temp=x[i];
+                x[i]=x[j];
+                x[j]=temp;
+                temp=y[i];
+                y[i]=y[j];
+                y[j]=temp;
+                strcpy(t,pn[i]);
+                strcpy(pn[i],pn[j]);
+                strcpy(pn[j],t);
+            }
+        }
+    for(i=0; i<n; i++)
+ 
+    {
+ 
+        if(i==0)
+        {
+            st[i]=x[i];
+            wt[i]=st[i]-x[i];
+            ft[i]=st[i]+y[i];
+            ta[i]=ft[i]-x[i];
+        }
+        else
+        {
+            st[i]=ft[i-1];
+            wt[i]=st[i]-x[i];
+            ft[i]=st[i]+y[i];
+            ta[i]=ft[i]-x[i];
+        }
+        totwt+=wt[i];
+        totta+=ta[i];
+    }
+    awt=(float)totwt/n;
+    ata=(float)totta/n;
+    printf("\nPname\tTempo de ingresso\tTempo de execucao\tprioridade\ttempo de espera\ttatime");
+    for(i=0; i<n; i++)
+        printf("\n%s\t%5d\t\t%5d\t\t%5d\t\t%5d\t\t%5d",pn[i],x[i],y[i],z[i],wt[i],ta[i]);
+    printf("\nAverage waiting time is:%f",awt);
+    printf("\nAverage turnaroundtime is:%f",ata);
+    getch();
 }
