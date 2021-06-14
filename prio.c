@@ -12,9 +12,9 @@ void main()
     scanf("%d",&n);
     for(i=0; i<n; i++)
     {
-        printf("Nome do processo, tempo de ingresso,tempo de execucao & prioridade");
+        printf("Insira o tempo de ingresso,tempo de execucao & prioridade do processo");
         //flushall();
-        scanf("%s%d%d%d",pn[i],&x[i],&y[i],&z[i]);
+        scanf("%s%d%d%d",&x[i],&y[i],&z[i]);
     }
     for(i=0; i<n; i++)
         for(j=0; j<n; j++)
