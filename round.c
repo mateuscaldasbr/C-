@@ -7,7 +7,7 @@
     void main()  
     {    
         int i, n, sum=0,count=0, y, m, wt=0, tat=0, at[10], bt[10], temp[10];  
-        float avg_wt, avg_tat;  
+        float tempMedioEspera, tempMedioExecucao;  
         printf("O valor do quantum a ser utilizado no escalonamento dos processos\n");  
     scanf("%d", &m); 
         printf("O numero de processos a serem lidos e colocados na fila de prontos\n");  
@@ -25,12 +25,12 @@
     printf("\n Processo \t\t Duracao Processo \t\t TAT \t\t Tempo de espera ");  
     for(sum=0, i = 0; y!=0; )  
     {  
-    if(temp[i] <= m && temp[i] > 0) // define the conditions   
+    if(temp[i] <= m && temp[i] > 0)
     {  
         sum = sum + temp[i];  
         temp[i] = 0;  
         count=1;  
-        }     
+        }   
         else if(temp[i] > 0)  
         {  
             temp[i] = temp[i] - m;  
@@ -38,8 +38,8 @@
         }  
         if(temp[i]==0 && count==1)  
         {  
-            y--; //decrement the process no.  
-            printf("\nProcess No[%d] \t\t %d\t\t\t\t %d\t\t\t %d", i+1, bt[i], sum-at[i], sum-at[i]-bt[i]);  
+            y--;  
+            printf("\nProcesso Numero[%d] \t\t %d\t\t\t\t %d\t\t\t %d", i+1, bt[i], sum-at[i], sum-at[i]-bt[i]);  
             wt = wt+sum-at[i]-bt[i];  
             tat = tat+sum-at[i];  
             count =0;     
@@ -56,11 +56,10 @@
         {  
             i=0;  
         }  
-    }  
-    // represents the average waiting time and Turn Around time  
-    avg_wt = wt * 1.0/n;  
-    avg_tat = tat * 1.0/n;  
-    printf("\n Average Turn Around Time: \t%f", avg_wt);  
-    printf("\n Average Waiting Time: \t%f", avg_tat);  
+    }    
+    tempMedioEspera = wt * 1.0/n;  
+    tempMedioExecucao = tat * 1.0/n;  
+    printf("\n Tempo medio de execucao:\t%fs", tempMedioExecucao);  
+    printf("\n Tempo medio de espera:\t%fs", tempMedioEspera);  
     getch();  
     }  
