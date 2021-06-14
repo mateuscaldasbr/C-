@@ -5,7 +5,7 @@ void main()
 {
     int y[20],x[10],n,i,j,temp,z[10],st[10],ft[10],wt[10],ta[10];
     int totwt=0,totta=0;
-    float awt,ata;
+    float tempMedioEspera,tempMedioExecucao;
     char pn[10][10],t[10];
     //clrscr();
     printf("Insira numero de processos a serem lidos e colocados na fila de prontos:");
@@ -56,12 +56,12 @@ void main()
         totwt+=wt[i];
         totta+=ta[i];
     }
-    awt=(float)totwt/n;
-    ata=(float)totta/n;
+    tempMedioEspera=(float)totwt/n;
+    tempMedioExecucao=(float)totta/n;
     printf("\nPname\tTempo de ingresso\tTempo de execucao\tprioridade\ttempo de espera\ttatime");
     for(i=0; i<n; i++)
         printf("\n%s\t%5d\t\t%5d\t\t%5d\t\t%5d\t\t%5d",pn[i],x[i],y[i],z[i],wt[i],ta[i]);
-    printf("\nAverage waiting time is:%f",awt);
-    printf("\nAverage turnaroundtime is:%f",ata);
+    printf("\nTempo medio de execucao:%fs",tempMedioExecucao);
+    printf("\nTempo medio de espera:%fs",tempMedioEspera);
     getch();
 }
