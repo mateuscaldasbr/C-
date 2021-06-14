@@ -21,9 +21,8 @@
     printf("Tempo de duracao do processo \n");
     scanf("%d", &bt[i]);  
     temp[i] = bt[i]; /*Guardar a duracao do processo em um array*/
-    } 
-    // Display the process No, burst time, Turn Around Time and the waiting time  
-    printf("\n Process No \t\t Burst Time \t\t TAT \t\t Waiting Time ");  
+    }   
+    printf("\n Processo \t\t Duracao Processo \t\t TAT \t\t Tempo de espera ");  
     for(sum=0, i = 0; y!=0; )  
     {  
     if(temp[i] <= m && temp[i] > 0) // define the conditions   
